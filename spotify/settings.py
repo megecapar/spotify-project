@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'spotify_app.apps.SpotifyAppConfig',
     'rest_framework',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
