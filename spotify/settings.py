@@ -83,7 +83,7 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'du5e1pq9idtp0',
+        'NAME': 'postgresql-octagonal-67269',
 
         'USER': 'enyrqxtuowlhrx',
 
@@ -97,8 +97,7 @@ DATABASES = {
 
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
