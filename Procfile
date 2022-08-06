@@ -1,1 +1,1 @@
-web: gunicorn --bind :$PORT
+web: gunicorn spotify_app:app
