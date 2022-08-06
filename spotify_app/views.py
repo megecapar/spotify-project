@@ -9,7 +9,7 @@ import json
 
 # Create your views here.
 url = 'https://api.spotify.com/v1/browse/featured-playlists'
-OAuthKey = "BQA-Nq5F96VYO8Z3eKuNP-ftT4dYE_zHeet0NS4GVDGFfaf4oTt9U2AONAiLpGhlHejTf4r2KYMCvezGhKQ2XfwNrjbdaPG8MlvGtIPlt3yHk7FRECzc1b7weXYKWrNM22nDJRLi98KLelu3wGxbariy9FjHvManFXWTQSG4a3sMgM5_XY3Pd44kDAOB4NgcI2A"
+OAuthKey = "BQDxndovNrKJdfO-0HQWkRg00WQHIMYENGAZvp3wGAX-1GpDDZttXrxSpQwyqjWB2xl_Pj8vEAFSJKcqvQKiVjnSfRUzRe0UjKMy24OEjaosmd5CwL3Dd66ox7nehvrMcWYuIgjtfT7PtJpn0NOUO1hqnpLpirO-cLjDJNczfUJd55mKjjH3G1pAw5MKoa5-z_c"
 
 
 def get_playlists(request: object) -> object:
