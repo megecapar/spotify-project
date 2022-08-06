@@ -5,6 +5,17 @@
     <title>Hello World</title>
 </head>
 <body>
-Hello World!
+
+
+<a href="{% url 'playlist' %}">
+  <button class="button button-blue button-bordered">
+    <span class="button--inner">View Playlists</span>
+  </button>
+</a>
+<a href="{% url 'update_playlists' %}">
+  <button class="button button-blue button-bordered">
+    <span class="button--inner">Update Playlists</span>
+  </button>
+</a>
 </body>
 </html>

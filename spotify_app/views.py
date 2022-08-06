@@ -9,10 +9,10 @@ import json
 
 # Create your views here.
 url = 'https://api.spotify.com/v1/browse/featured-playlists'
-OAuthKey = "BQB_-iSda9RnTT0LgXxxdPlB0JTCNae71eSQAjkO33EohAn2KaeApDyxVEgD3UFTBcx6Vn8Lt7QVWvWge7aP5GDX9qSGGthkOx4JyJTo4OTRmdaj9cB_U4fgaytEwvO3Sv0_U1zV60GmRVebmq9svz8O5P-QpzAUIoOyWzL5SIx0XJpBJWlvvGjrWlaDFcuUSy4"
+OAuthKey = "BQA-Nq5F96VYO8Z3eKuNP-ftT4dYE_zHeet0NS4GVDGFfaf4oTt9U2AONAiLpGhlHejTf4r2KYMCvezGhKQ2XfwNrjbdaPG8MlvGtIPlt3yHk7FRECzc1b7weXYKWrNM22nDJRLi98KLelu3wGxbariy9FjHvManFXWTQSG4a3sMgM5_XY3Pd44kDAOB4NgcI2A"
 
 
-def get_playlists(request):
+def get_playlists(request: object) -> object:
     response = requests.get(url, headers={"Authorization": "Bearer " + OAuthKey})
     data = response.json()["playlists"]["items"]
     for playlist in data:
@@ -29,6 +29,21 @@ class PlaylistView(generic.ListView):
     context_object_name = 'playlists'
 
 
+class PlaylistUpdateView(generic.ListView):
+    response = requests.get(url, headers={"Authorization": "Bearer " + OAuthKey})
+    data = response.json()["playlists"]["items"]
+    for playlist in data:
+        if not Playlist.objects.filter(name=playlist["name"]).exists():
+            Playlist.objects.create(name=playlist["name"], owner=playlist["owner"]["display_name"],
+                                    isCollaborative=playlist["collaborative"], description=playlist["description"],
+                                    url=playlist["external_urls"]["spotify"])
+
+
+    model = Playlist
+    template_name = "playlists.html"
+    context_object_name = 'playlists'
+
+
 class PlaylistDetailView(generic.DetailView):
 
     model = Playlist
@@ -39,3 +54,7 @@ class PlaylistDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['pk'] = self.kwargs['pk']
         return context
+
+
+def index(request):
+    return render(request, "index.html")
